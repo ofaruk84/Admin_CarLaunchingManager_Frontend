@@ -14,6 +14,8 @@ import { DestinationComponent } from './components/destination/destination.compo
 import { UserComponent } from './components/user/user.component';
 import { AttendeeComponent } from './components/attendee/attendee.component';
 import { LoginComponent } from './components/login/login.component';
+import { CarComponent } from './components/car/car.component';
+import { CarDetailComponent } from './components/car-detail/car-detail.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { LoginComponent } from './components/login/login.component';
     UserComponent,
     AttendeeComponent,
     LoginComponent,
+    CarComponent,
+    CarDetailComponent,
    
   ],
   imports: [
