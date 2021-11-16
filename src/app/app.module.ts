@@ -17,6 +17,8 @@ import { LoginComponent } from './components/login/login.component';
 import { CarComponent } from './components/car/car.component';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
 
+import {FileUploadModule} from 'ng2-file-upload'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +38,8 @@ import { CarDetailComponent } from './components/car-detail/car-detail.component
     NgbModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    FileUploadModule
   ],
   providers: [],
   bootstrap: [AppComponent]

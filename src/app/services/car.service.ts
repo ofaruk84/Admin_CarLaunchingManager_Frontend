@@ -22,6 +22,12 @@ export class CarService {
 
     return this.httpClient.get<ListResponseModel<Car>>(newPath);
   }
+  getByid(id:number):Observable<SingleResponseModel<Car>>{
+
+    let newPath = this.apiUrl + "getbyid";
+
+    return this.httpClient.get<SingleResponseModel<Car>>(newPath);
+  }
   
 
 }
