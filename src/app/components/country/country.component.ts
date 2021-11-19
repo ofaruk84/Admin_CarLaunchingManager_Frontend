@@ -12,6 +12,7 @@ import { Country } from 'src/app/models/country';
 export class CountryComponent implements OnInit {
   countries: ApiCountry[];
   newCountry: ApiCountry[] =[];
+  dbCountries:Country[]=[]
   selectedCountry:any = {};
   isSelected=true;
   
@@ -21,6 +22,7 @@ export class CountryComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.getAll();
     this.countryForm = this.formBuilder.group({
       
       countryName:"",
@@ -28,6 +30,7 @@ export class CountryComponent implements OnInit {
     })
 
     this.getCountries();
+   
   }
 
   getCountries() {
@@ -69,6 +72,12 @@ export class CountryComponent implements OnInit {
     }),(err=>{
       console.log(err);
     }));
+  }
+
+  getAll(){
+    this.countryService.getAll().subscribe((response) => {
+      this.dbCountries = response.data;
+    });
   }
 
   onCountryChange(){

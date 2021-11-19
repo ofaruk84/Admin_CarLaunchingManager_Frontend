@@ -28,6 +28,12 @@ export class CarService {
 
     return this.httpClient.get<SingleResponseModel<Car>>(newPath);
   }
+
+  addCar(car:Car){
+    let newPath = this.apiUrl + "add";
+
+    return this.httpClient.post(newPath,car);
+  }
   
 
 }

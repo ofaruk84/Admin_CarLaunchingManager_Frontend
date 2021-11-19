@@ -1,6 +1,6 @@
 
 
-<div class="container-fluid">
+<div class="container-fluid mb-4">
   <h1 class="mb-4">Countries</h1>
   <div class="row">
     <div class="col-7">
@@ -36,9 +36,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row" (click)="log()">Default</th>
-            <td>CountryName</td>
+          <tr *ngFor="let country of dbCountries">
+            <th scope="row">Country</th>
+            <td>{{country.countryName}}</td>
           </tr>
         </tbody>
       </table>
@@ -83,8 +83,8 @@
                 >Select Country</label
               >
               <select class="form-select" id="exampleSelect1">
-                <option *ngFor="let country of countries">
-                  {{ country.country }}
+                <option *ngFor="let country of dbCountries">
+                  {{ country.countryName }}
                 </option>
               </select>
             </div>
@@ -94,7 +94,7 @@
                 type="submit"
                 style="width: 100%"
               >
-                Add Country
+                Delete Country
               </button>
             </div>
           </fieldset>

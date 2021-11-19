@@ -2,7 +2,11 @@
   <div class="row">
     <img class="banner" src="./assets/logohd.jpg" alt="" />
   </div>
+
   <div class="container">
+    <h4 class="mb-2 mt-2 ml-2">
+      Selected Car: 
+    </h4>
     <section>
       <style>
         .my-drop-zone {
@@ -14,20 +18,18 @@
         .another-file-over-class {
           border: dotted 3px green;
         }
-  
+
         html,
         body {
           height: 100%;
         }
       </style>
-  
+
       <div class="container-fluid mt-4">
-      
-  
         <div class="row">
           <div class="col-md-3">
             <h3>Select Files</h3>
-  
+
             <div
               ng2FileDrop
               [ngClass]="{ 'nv-file-over': hasBaseDropZoneOver }"
@@ -45,15 +47,15 @@
               [uploader]="uploader"
               multiple
             /><br />
-  
+
             Single
             <input type="file" ng2FileSelect [uploader]="uploader" />
           </div>
-  
+
           <div class="col-md-9" style="margin-bottom: 40px">
             <h3>Upload queue</h3>
             <p>Queue length: {{ uploader?.queue?.length }}</p>
-  
+
             <table class="table">
               <thead>
                 <tr>
@@ -109,7 +111,8 @@
                       (click)="item.cancel()"
                       [disabled]="!item.isUploading"
                     >
-                      <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                      <span class="glyphicon glyphicon-ban-circle"></span>
+                      Cancel
                     </button>
                     <button
                       type="button"
@@ -122,7 +125,7 @@
                 </tr>
               </tbody>
             </table>
-  
+
             <div>
               <div>
                 Queue progress:
@@ -149,7 +152,8 @@
                   (click)="uploader.cancelAll()"
                   [disabled]="!uploader.isUploading"
                 >
-                  <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+                  <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                  all
                 </button>
                 <button
                   type="button"
@@ -163,10 +167,9 @@
             </div>
           </div>
         </div>
-  
+
         <br /><br />
       </div>
     </section>
   </div>
-
 </div>
