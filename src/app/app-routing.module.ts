@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AttendeeDetailComponent } from './components/attendee-detail/attendee-detail.component';
 import { AttendeeComponent } from './components/attendee/attendee.component';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
 import { CarComponent } from './components/car/car.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path:'countries',component:CountryComponent},
   {path:'destinations',component:DestinationComponent},
   {path:'cars/:id',component:CarDetailComponent},
+  {path:'attendees/:id',component:AttendeeDetailComponent},
   {path:'',redirectTo:'users',pathMatch:'full'},
   {path:'**',redirectTo:'users',pathMatch:'full'}
 

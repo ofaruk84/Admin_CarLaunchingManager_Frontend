@@ -17,7 +17,8 @@ import { LoginComponent } from './components/login/login.component';
 import { CarComponent } from './components/car/car.component';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
 
-import {FileUploadModule} from 'ng2-file-upload'
+import {FileUploadModule} from 'ng2-file-upload';
+import { AttendeeDetailComponent } from './components/attendee-detail/attendee-detail.component'
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import {FileUploadModule} from 'ng2-file-upload'
     LoginComponent,
     CarComponent,
     CarDetailComponent,
+    AttendeeDetailComponent,
    
   ],
   imports: [

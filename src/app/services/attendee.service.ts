@@ -11,12 +11,20 @@ export class AttendeeService {
 
   
 
-  apiUrl:string ="https://localhost:44366/api/Attendees/getall"
+  apiUrl:string ="https://localhost:44366/api/Attendees/"
 
   constructor(private httpClient:HttpClient) { }
 
-  getAttendes():Observable<ListResponseModel<Attendee>>
+  getAll():Observable<ListResponseModel<Attendee>>
   {
-      return this.httpClient.get<ListResponseModel<Attendee>>(this.apiUrl);
+     let newPath = this.apiUrl+"getall"
+      return this.httpClient.get<ListResponseModel<Attendee>>(newPath);
+  }
+
+  addAttendee(attendee:Attendee){
+
+    let newPath = this.apiUrl + "add";
+
+    return this.httpClient.post(newPath,attendee);
   }
 }

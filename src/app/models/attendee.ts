@@ -1,9 +1,9 @@
 export interface Attendee{
 
- attendeeId:string;
- attendeeName:string;
- attendeeJob:string;
- attendeeNationality:string;
+ attendeeId?:number;
+ attendeeName?:string;
+ attendeeJob?:string;
+ attendeeNationality?:string;
 
 
 }
