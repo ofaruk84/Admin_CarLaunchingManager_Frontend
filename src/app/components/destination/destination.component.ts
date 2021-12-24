@@ -23,9 +23,12 @@ export class DestinationComponent implements OnInit {
 
   destinations: DestinationDto[] = [];
 
+  destinationsDb:Destination[] = [];
+
   isSelected: boolean = true;
 
   destinationForm: FormGroup;
+  destinationDeleteForm:FormGroup;
 
   constructor(
     private countryService: CountryService,
@@ -39,10 +42,24 @@ export class DestinationComponent implements OnInit {
       destinationName: '',
     });
 
+    this.destinationDeleteForm = this.formBuilder.group({
+      countryName: '',
+      destinationName: '',
+    });
+
     this.getCountries();
     this.getCountriesFromDB();
     this.getDestination();
+    this.getAllDestinationsFromDB();
   }
+
+  getAllDestinationsFromDB(){
+
+    this.destinationService.getAll().subscribe((response) => {
+      this.destinationsDb = response.data;
+    });
+  }
+  
 
   getCountries() {
     this.countryService.getAllCountriesByApi().subscribe((response) => {
@@ -141,5 +158,16 @@ export class DestinationComponent implements OnInit {
       destinationName: destination,
     };
     this.destinations.push(addedDestination);
+  }
+
+  deleteSubmit(){
+
+    let destinationName= String(this.destinationDeleteForm.controls['destinationName'].value);
+
+    this.destinationService.deleteByDestinationName(destinationName).subscribe((res=>{
+
+      console.log(res)
+    }))
+
   }
 }

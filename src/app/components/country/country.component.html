@@ -76,13 +76,13 @@
     </ngb-panel>
     <ngb-panel title="Delete Country">
       <ng-template ngbPanelContent>
-        <form>
+        <form [formGroup]="countryDeleteForm" (ngSubmit)="deleteSubmit()">
           <fieldset>
             <div class="form-group">
               <label for="exampleSelect1" class="form-label mt-4"
                 >Select Country</label
               >
-              <select class="form-select" id="exampleSelect1">
+              <select class="form-select" id="exampleSelect1" formControlName="countryName">
                 <option *ngFor="let country of dbCountries">
                   {{ country.countryName }}
                 </option>

@@ -63,7 +63,7 @@
   </div>
 
   <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
-    <ngb-panel title="Add Country">
+    <ngb-panel title="Add Destination">
       <ng-template ngbPanelContent>
         <form [formGroup]="destinationForm" (ngSubmit)="submit()">
           <fieldset>
@@ -105,6 +105,39 @@
                 style="width: 100%"
               >
                 Add Destination
+              </button>
+            </div>
+          </fieldset>
+        </form>
+      </ng-template>
+    </ngb-panel>
+    <ngb-panel title="Delete Destination">
+      <ng-template ngbPanelContent>
+        <form [formGroup]="destinationDeleteForm" (ngSubmit)="deleteSubmit()">
+          <fieldset>
+            <div class="form-group">
+              <label for="selectCountry" class="form-label mt-4"
+                >Select Destination</label
+              >
+              <select
+                class="form-select"
+                id="exampleSelect1"
+                (change)="onCountryChange($event)"
+                formControlName="destinationName"
+
+              >
+                <option *ngFor="let destination of destinationsDb">
+                  {{ destination.destinationName }}
+                </option>
+              </select>
+            </div>
+            <div class="form-group">
+              <button
+                class="btn btn-lg btn-light"
+                type="submit"
+                style="width: 100%"
+              >
+                Delete Destination
               </button>
             </div>
           </fieldset>

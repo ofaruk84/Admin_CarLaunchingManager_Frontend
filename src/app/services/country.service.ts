@@ -44,6 +44,17 @@ export class CountryService {
     return this.httpClient.post<SingleResponseModel<number>>(newPath,countryName);
   }
 
+  deleteByCountryName(countryName:string){
+    let newPath = this.apiUrl + "deletecountrybyname?countryName="+countryName;
+
+    return this.httpClient.post(newPath,null);
+  }
+
+  getByCountryname(countryName:string):Observable<SingleResponseModel<Country>>{
+    let newPath = this.apiUrl + "getbyusername?countryName="+countryName;
+
+    return this.httpClient.get<SingleResponseModel<Country>>(newPath);
+  }
   handleError(error: HttpErrorResponse) {
     return throwError(error);
 }

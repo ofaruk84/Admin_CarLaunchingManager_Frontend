@@ -17,6 +17,7 @@ export class CountryComponent implements OnInit {
   isSelected=true;
   
   countryForm:FormGroup;
+  countryDeleteForm:FormGroup
   
   constructor(private countryService: CountryService,private formBuilder: FormBuilder) {}
 
@@ -24,6 +25,12 @@ export class CountryComponent implements OnInit {
 
     this.getAll();
     this.countryForm = this.formBuilder.group({
+      
+      countryName:"",
+
+    })
+
+    this.countryDeleteForm = this.formBuilder.group({
       
       countryName:"",
 
@@ -64,7 +71,25 @@ export class CountryComponent implements OnInit {
     this.addCountry(addedCountry)
   }
 
+  deleteSubmit(){
+    let country = String(this.countryDeleteForm.controls['countryName'].value);
 
+    console.log(country);
+    this.delete(country);
+
+  }
+
+  delete(countryName:string):void{
+
+    this.countryService.deleteByCountryName(countryName).subscribe((response) => {
+      
+      console.log(response)
+      
+    },(err=>{
+        console.log(err);
+    }));
+
+  }
   addCountry(country:Country){
 
     this.countryService.addCountry(country).subscribe((response=>{

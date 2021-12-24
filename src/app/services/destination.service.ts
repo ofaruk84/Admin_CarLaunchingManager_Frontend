@@ -43,6 +43,18 @@ export class DestinationService {
     let newPath = this.apiUrl + 'add';
     return this.httpClient.post(newPath,destination).pipe(catchError(this.handleError))
   }
+
+  deleteByDestinationName(destinationName:string){
+    let newPath = this.apiUrl + "deletebydestinationname?destinationName="+destinationName;
+
+    return this.httpClient.post(newPath,null);
+  }
+
+  getByDestinationName(destinationName:string):Observable<SingleResponseModel<Destination>>{
+    let newPath = this.apiUrl + "deletebydestinationname?destinationName="+destinationName;
+
+    return this.httpClient.get<SingleResponseModel<Destination>>(newPath);
+  }
   
   handleError(error: HttpErrorResponse) {
     return throwError(error);
