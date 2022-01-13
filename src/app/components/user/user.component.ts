@@ -51,7 +51,7 @@ export class UserComponent implements OnInit {
 
     })
 
-    this.getAll();
+    //this.getAll();
   }
 
   getAll():void{

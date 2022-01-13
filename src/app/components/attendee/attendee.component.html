@@ -8,6 +8,8 @@
             <th scope="col">Attendee Name</th>
             <th scope="col">Attendee Job</th>
             <th scope="col">Attendee Nationality</th>
+            <th scope="col">Delete</th>
+            
           </tr>
         </thead>
         <tbody>
@@ -15,6 +17,7 @@
             <td>{{ attendee.attendeeName }}</td>
             <td>{{ attendee.attendeeJob }}</td>
             <td>{{ attendee.attendeeNationality }}</td>
+            <td><button type="button" class="btn btn-light" (click)="onDelete(attendee)">Light</button></td>
           </tr>
         </tbody>
       </table>
@@ -26,6 +29,18 @@
       <ng-template ngbPanelContent>
         <form [formGroup]="attendeeForm" (ngSubmit)="submit()">
           <fieldset>
+            <div class="form-group">
+              <label for="attendeeName" class="form-label mt-4"
+                >Attendee Name</label
+              >
+              <input
+                type="email"
+                class="form-control"
+                id="attendeeEmail"
+                placeholder="Attendee Email"
+                formControlName="attendeeEmail"
+              />
+            </div>
             <div class="form-group">
               <label for="attendeeName" class="form-label mt-4"
                 >Attendee Name</label
