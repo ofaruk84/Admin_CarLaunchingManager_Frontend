@@ -1,4 +1,3 @@
-<!--
 <div class="container-fluid mb-4">
   <h1 class="mb-4">Users</h1>
   <div class="row">
@@ -8,16 +7,17 @@
           <tr>
             <th scope="col">Username</th>
             <th scope="col">Email</th>
-            <th scope="col">Password</th>
-            <th scope="col">Admin Status</th>
+            <th scope="col">Firstname</th>
+            <th scope="col">Surname</th>
+
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let user of users">
             <th scope="row">{{ user.userName }}</th>
             <td>{{ user.email }}</td>
-            <td>{{ user.password }}</td>
-            <td>{{ user.isAdmin }}</td>
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
           </tr>
         </tbody>
       </table>
@@ -29,6 +29,30 @@
       <ng-template ngbPanelContent>
         <form [formGroup]="userForm" (ngSubmit)="submit()">
           <fieldset>
+            <div class="form-group">
+              <label for="firstname" class="form-label mt-4"
+                >Enter Your Name</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="firstname"
+                placeholder="firstname"
+                formControlName="firstname"
+              />
+            </div>
+            <div class="form-group">
+              <label for="firstname" class="form-label mt-4"
+                >Enter Your Lastname</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="lastname"
+                placeholder="lastname"
+                formControlName="lastname"
+              />
+            </div>
             <div class="form-group">
               <label for="username" class="form-label mt-4"
                 >Enter Username</label
@@ -64,15 +88,6 @@
               />
             </div>
             <div class="form-group">
-              <label for="admin" class="form-label mt-4"
-                >Select Admin Status</label
-              >
-              <select class="form-select" id="admin" formControlName="admin">
-                <option value="true">True</option>
-                <option value="false">False</option>
-              </select>
-            </div>
-            <div class="form-group">
               <button
                 class="btn btn-lg btn-light"
                 type="submit"
@@ -86,6 +101,7 @@
       </ng-template>
     </ngb-panel>
   </ngb-accordion>
+ 
   <ngb-accordion class="mt-2" #acc="ngbAccordion" activeIds="ngb-panel-0">
     <ngb-panel title="Delete User">
       <ng-template ngbPanelContent>
@@ -118,6 +134,7 @@
       </ng-template>
     </ngb-panel>
   </ngb-accordion>
+   <!--
   <ngb-accordion class="mt-2" #acc="ngbAccordion" activeIds="ngb-panel-0">
     <ngb-panel title="Update User">
       <ng-template ngbPanelContent>

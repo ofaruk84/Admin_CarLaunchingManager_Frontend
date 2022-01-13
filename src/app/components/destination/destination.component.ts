@@ -7,6 +7,7 @@ import { DestinationService } from 'src/app/services/destination.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Destination } from 'src/app/models/destination';
 import { DestinationDto } from 'src/app/models/destinationDto';
+import { AlertifyService } from 'src/app/services/alertify.service';
 @Component({
   selector: 'app-destination',
   templateUrl: './destination.component.html',
@@ -23,16 +24,17 @@ export class DestinationComponent implements OnInit {
 
   destinations: DestinationDto[] = [];
 
-  destinationsDb:Destination[] = [];
+  destinationsDb: Destination[] = [];
 
   isSelected: boolean = true;
 
   destinationForm: FormGroup;
-  destinationDeleteForm:FormGroup;
+  destinationDeleteForm: FormGroup;
 
   constructor(
     private countryService: CountryService,
     private destinationService: DestinationService,
+    private alertifyService: AlertifyService,
     private formBuilder: FormBuilder
   ) {}
 
@@ -53,13 +55,11 @@ export class DestinationComponent implements OnInit {
     this.getAllDestinationsFromDB();
   }
 
-  getAllDestinationsFromDB(){
-
+  getAllDestinationsFromDB() {
     this.destinationService.getAll().subscribe((response) => {
       this.destinationsDb = response.data;
     });
   }
-  
 
   getCountries() {
     this.countryService.getAllCountriesByApi().subscribe((response) => {
@@ -128,7 +128,10 @@ export class DestinationComponent implements OnInit {
         console.log(response);
       },
       (error) => {
-        console.log(error);
+        this.alertifyService.errorMessage("Couldn't Add Destination");
+      },
+      () => {
+        this.alertifyService.successMessage('Destination Added');
       }
     );
   }
@@ -160,14 +163,21 @@ export class DestinationComponent implements OnInit {
     this.destinations.push(addedDestination);
   }
 
-  deleteSubmit(){
+  deleteSubmit() {
+    let destinationName = String(
+      this.destinationDeleteForm.controls['destinationName'].value
+    );
 
-    let destinationName= String(this.destinationDeleteForm.controls['destinationName'].value);
-
-    this.destinationService.deleteByDestinationName(destinationName).subscribe((res=>{
-
-      console.log(res)
-    }))
-
+    this.destinationService.deleteByDestinationName(destinationName).subscribe(
+      (res) => {
+        console.log(res);
+      },
+      (error) => {
+        this.alertifyService.errorMessage("Couldn't Delete Destination");
+      },
+      () => {
+        this.alertifyService.successMessage('Destination Deleted');
+      }
+    );
   }
 }
