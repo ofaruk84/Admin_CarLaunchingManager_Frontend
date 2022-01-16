@@ -93,6 +93,7 @@ export class UserComponent implements OnInit {
       console.log(err);
     }),(()=>{
       this.alertifyService.successMessage("User Deleted")
+      
     }));
   }
 

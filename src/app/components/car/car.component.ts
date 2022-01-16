@@ -3,6 +3,7 @@ import { Car } from 'src/app/models/car';
 import { CarService } from 'src/app/services/car.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Country } from 'src/app/models/country';
+import { AlertifyService } from 'src/app/services/alertify.service';
 @Component({
   selector: 'app-car',
   templateUrl: './car.component.html',
@@ -15,7 +16,7 @@ export class CarComponent implements OnInit {
 
   carForm:FormGroup;
 
-  constructor(private carService:CarService,private formBuilder: FormBuilder) { }
+  constructor(private carService:CarService,private formBuilder: FormBuilder,private alertifyService:AlertifyService) { }
 
   ngOnInit(): void {
 
@@ -51,7 +52,12 @@ export class CarComponent implements OnInit {
 
       console.log(response);
     }),(error=>{
-      console.log(error);
+
+    this.alertifyService.errorMessage("Could not Add Car")
+     console.log(error);
+    }),(()=>{
+      this.alertifyService.successMessage("Car Added");
+      
     }))
   }
 }

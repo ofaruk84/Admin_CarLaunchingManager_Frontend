@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navi',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NaviComponent implements OnInit {
 
-  constructor() { }
+  token:any;
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+
+    this.token =localStorage.getItem("token");
   }
 
+  logout(){
+    localStorage.clear();
+    this.router.navigate(['login']);
+  }
 }

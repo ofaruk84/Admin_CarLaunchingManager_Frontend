@@ -9,19 +9,20 @@ import { DestinationComponent } from './components/destination/destination.compo
 
 import { LoginComponent } from './components/login/login.component';
 import { UserComponent } from './components/user/user.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
 
-  {path:'attendees',component:AttendeeComponent},
-  {path:'users',component:UserComponent},
+  {path:'attendees',component:AttendeeComponent,canActivate:[AuthGuard]},
+  {path:'users',component:UserComponent,canActivate:[AuthGuard]},
   {path:'login',component:LoginComponent},
-  {path:'cars',component:CarComponent},
-  {path:'countries',component:CountryComponent},
-  {path:'destinations',component:DestinationComponent},
-  {path:'cars/:id',component:CarDetailComponent},
-  {path:'attendees/:id',component:AttendeeDetailComponent},
-  {path:'',redirectTo:'users',pathMatch:'full'},
-  {path:'**',redirectTo:'users',pathMatch:'full'}
+  {path:'cars',component:CarComponent,canActivate:[AuthGuard]},
+  {path:'countries',component:CountryComponent,canActivate:[AuthGuard]},
+  {path:'destinations',component:DestinationComponent,canActivate:[AuthGuard]},
+  {path:'cars/:id',component:CarDetailComponent,canActivate:[AuthGuard]},
+  {path:'attendees/:id',component:AttendeeDetailComponent,canActivate:[AuthGuard]},
+  {path:'',redirectTo:'login',pathMatch:'full'},
+  {path:'**',redirectTo:'login',pathMatch:'full'}
 
 ];
 
