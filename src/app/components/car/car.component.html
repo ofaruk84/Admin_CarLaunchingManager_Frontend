@@ -29,12 +29,15 @@
           <tr>
             <th scope="col">Car Name</th>
             <th scope="col">Car Year</th>
+            <th scope="col">Delete Car</th>
+
           </tr>
         </thead>
         <tbody>
-          <tr [routerLink]="['/cars', car.carId]" routerLinkActive="router-link-active" *ngFor="let car of cars">
-            <th scope="row">{{car.carName}}</th>
+          <tr  *ngFor="let car of cars">
+            <th [routerLink]="['/cars', car.carId]" routerLinkActive="router-link-active" style="cursor: pointer;" scope="row">{{car.carName}}</th>
             <td>{{car.year}}</td>
+            <td><button type="button" class="btn btn-light" (click)="onDelete(car)">Delete</button></td>
           </tr>
         </tbody>
       </table>
@@ -42,7 +45,7 @@
   </div>
 
   <ngb-accordion  #acc="ngbAccordion" activeIds="ngb-panel-0">
-    <ngb-panel title="Add Country">
+    <ngb-panel title="Add Car">
       <ng-template ngbPanelContent>
         <form [formGroup]="carForm" (ngSubmit)="submit()">
           <fieldset>

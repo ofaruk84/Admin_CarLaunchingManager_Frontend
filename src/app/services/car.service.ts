@@ -34,6 +34,13 @@ export class CarService {
 
     return this.httpClient.post(newPath,car);
   }
+
+  deleteCar(car:Car){
+
+    let newPath = this.apiUrl + "delete";
+
+    return this.httpClient.post(newPath,car);
+  }
   
 
 }

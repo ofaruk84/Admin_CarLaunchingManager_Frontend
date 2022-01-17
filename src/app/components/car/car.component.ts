@@ -7,57 +7,77 @@ import { AlertifyService } from 'src/app/services/alertify.service';
 @Component({
   selector: 'app-car',
   templateUrl: './car.component.html',
-  styleUrls: ['./car.component.css']
+  styleUrls: ['./car.component.css'],
 })
 export class CarComponent implements OnInit {
+  cars: Car[] = [];
 
+  carForm: FormGroup;
 
-  cars:Car[] = [];
-
-  carForm:FormGroup;
-
-  constructor(private carService:CarService,private formBuilder: FormBuilder,private alertifyService:AlertifyService) { }
+  constructor(
+    private carService: CarService,
+    private formBuilder: FormBuilder,
+    private alertifyService: AlertifyService
+  ) {}
 
   ngOnInit(): void {
-
     this.carForm = this.formBuilder.group({
-
-      carName:"",
-      carYear:""
-    })
+      carName: '',
+      carYear: '',
+    });
 
     this.getAll();
-
   }
-  
 
-  getAll():void{
+  getAll(): void {
     this.carService.getAll().subscribe((response) => {
       this.cars = response.data;
     });
   }
 
-  submit(){
+  submit() {
     console.log(this.carForm);
-    let carName = String(  this.carForm.controls['carName'].value);
-    let carYear = String(  this.carForm.controls['carYear'].value);
+    let carName = String(this.carForm.controls['carName'].value);
+    let carYear = String(this.carForm.controls['carYear'].value);
 
-    let addedCar:Car = {carId:undefined,carName:carName,year:carYear};
+    let addedCar: Car = { carId: undefined, carName: carName, year: carYear };
 
     this.addCar(addedCar);
+
+    setTimeout(() => window.location.reload, 1000);
   }
 
-  addCar(car:Car){
-    this.carService.addCar(car).subscribe((response=>{
+  addCar(car: Car) {
+    this.carService.addCar(car).subscribe(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        this.alertifyService.errorMessage('Could not Add Car');
+        console.log(error);
+      },
+      () => {
+        this.alertifyService.successMessage('Car Added');
+      }
+    );
+  }
 
-      console.log(response);
-    }),(error=>{
+  deleteCar(car: Car) {
+    this.carService.deleteCar(car).subscribe(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        this.alertifyService.errorMessage('Could not Delete Car');
+        console.log(error);
+      },
+      () => {
+        this.alertifyService.successMessage('Car Deleted');
+      }
+    );
+  }
 
-    this.alertifyService.errorMessage("Could not Add Car")
-     console.log(error);
-    }),(()=>{
-      this.alertifyService.successMessage("Car Added");
-      
-    }))
+  onDelete(car: Car) {
+    this.deleteCar(car);
   }
 }

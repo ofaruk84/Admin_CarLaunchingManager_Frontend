@@ -13,11 +13,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr [routerLink]="['/attendees', attendee.attendeeId]" routerLinkActive="router-link-active" *ngFor="let attendee of attendees">
-            <td>{{ attendee.attendeeName }}</td>
+          <tr *ngFor="let attendee of attendees">
+            <td [routerLink]="['/attendees', attendee.attendeeId]" routerLinkActive="router-link-active" style="cursor: pointer;">{{ attendee.attendeeName }}</td>
             <td>{{ attendee.attendeeJob }}</td>
             <td>{{ attendee.attendeeNationality }}</td>
-            <td><button type="button" class="btn btn-light" (click)="onDelete(attendee)">Light</button></td>
+            <td><button type="button" class="btn btn-light" (click)="onDelete(attendee)">Delete</button></td>
           </tr>
         </tbody>
       </table>

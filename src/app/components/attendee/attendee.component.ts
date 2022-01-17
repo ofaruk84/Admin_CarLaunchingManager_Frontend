@@ -126,5 +126,29 @@ export class AttendeeComponent implements OnInit {
       this.alertifyService.successMessage("Mail has been sent to : "+attendeeMail.email);
     }))
   }
-  onDelete(attendee: Attendee) {}
+
+  deleteAttendee(attendee: Attendee) {
+
+    this.attendeeService.deleteAttendee(attendee).subscribe(
+      (res) => {
+        console.log(res);
+      },
+      (err) => {
+        console.log(err);
+        this.alertifyService.errorMessage('Couldnt  Delete Attendee');
+      },
+      () => {
+        this.alertifyService.successMessage('Attendee Delete');
+        
+      }
+      
+    );
+
+ 
+  }
+
+  onDelete(attendee: Attendee) {
+
+    this.deleteAttendee(attendee);
+  }
 }

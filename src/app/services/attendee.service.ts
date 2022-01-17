@@ -27,4 +27,11 @@ export class AttendeeService {
 
     return this.httpClient.post(newPath,attendee);
   }
+  
+  deleteAttendee(attendee:Attendee){
+
+    let newPath = this.apiUrl + "delete";
+
+    return this.httpClient.post(newPath,attendee);
+  }
 }
