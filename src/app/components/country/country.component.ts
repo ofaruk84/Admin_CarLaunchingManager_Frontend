@@ -82,7 +82,8 @@ export class CountryComponent implements OnInit {
       },
       () => {
         console.log('complete');
-        this.alertifyService.successMessage('Country Deleted');
+        //this.alertifyService.successMessage('Country Deleted');
+        window.location.reload();
       }
     );
   }
@@ -96,7 +97,8 @@ export class CountryComponent implements OnInit {
       },
 
       () => {
-        this.alertifyService.successMessage('Country Added');
+        //this.alertifyService.successMessage('Country Added');
+        window.location.reload();
       }
     );
   }

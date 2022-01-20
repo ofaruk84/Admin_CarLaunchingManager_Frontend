@@ -131,7 +131,8 @@ export class DestinationComponent implements OnInit {
         this.alertifyService.errorMessage("Couldn't Add Destination");
       },
       () => {
-        this.alertifyService.successMessage('Destination Added');
+        //this.alertifyService.successMessage('Destination Added');
+        window.location.reload();
       }
     );
   }
@@ -176,7 +177,9 @@ export class DestinationComponent implements OnInit {
         this.alertifyService.errorMessage("Couldn't Delete Destination");
       },
       () => {
-        this.alertifyService.successMessage('Destination Deleted');
+        
+        //this.alertifyService.successMessage('Destination Deleted');
+        window.location.reload();
       }
     );
   }

@@ -57,7 +57,9 @@ export class CarComponent implements OnInit {
         console.log(error);
       },
       () => {
-        this.alertifyService.successMessage('Car Added');
+        
+        window.location.reload();
+        //this.alertifyService.successMessage('Car Added');
       }
     );
   }
@@ -72,7 +74,8 @@ export class CarComponent implements OnInit {
         console.log(error);
       },
       () => {
-        this.alertifyService.successMessage('Car Deleted');
+        window.location.reload();
+        //this.alertifyService.successMessage('Car Deleted');
       }
     );
   }

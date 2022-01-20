@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiCountry } from 'src/app/models/apiCountry';
 import { Attendee } from 'src/app/models/attendee';
 import { AttendeeMail } from 'src/app/models/attendeeMail';
@@ -36,10 +36,10 @@ export class AttendeeComponent implements OnInit {
       attendeeName: '',
       attendeeJob: '',
       attendeeNationality: '',
-    });
+    },Validators.required);
     this.attendeeDeleteForm = this.formBuilder.group({
       attendeeName: '',
-    });
+    },Validators.required);
 
     this.getAll();
     this.getCountries();
@@ -103,11 +103,11 @@ export class AttendeeComponent implements OnInit {
       },
       (err) => {
         console.log(err);
-        this.alertifyService.errorMessage('Couldnt  Add Attendee');
+        //this.alertifyService.errorMessage('Couldnt  Add Attendee');
       },
       () => {
-        this.alertifyService.successMessage('Attendee Added');
-        
+        //this.alertifyService.successMessage('Attendee Added');
+        window.location.reload();
       }
       
     );
@@ -138,8 +138,8 @@ export class AttendeeComponent implements OnInit {
         this.alertifyService.errorMessage('Couldnt  Delete Attendee');
       },
       () => {
-        this.alertifyService.successMessage('Attendee Delete');
-        
+        //this.alertifyService.successMessage('Attendee Delete');
+        window.location.reload();
       }
       
     );

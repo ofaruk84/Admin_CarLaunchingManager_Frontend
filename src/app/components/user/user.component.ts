@@ -79,7 +79,8 @@ export class UserComponent implements OnInit {
       console.log(err);
       this.alertifyService.errorMessage("Could not Add User ")
     }),(()=>{
-        this.alertifyService.successMessage("User Added")
+        //this.alertifyService.successMessage("User Added")
+        window.location.reload()
     }));
   }
 
@@ -92,7 +93,8 @@ export class UserComponent implements OnInit {
     }, (err => {
       console.log(err);
     }),(()=>{
-      this.alertifyService.successMessage("User Deleted")
+      //this.alertifyService.successMessage("User Deleted")
+      window.location.reload()
       
     }));
   }
@@ -147,7 +149,8 @@ export class UserComponent implements OnInit {
     }, (err => {
       this.alertifyService.errorMessage("Cant be deleted");
     }),(()=>{
-      this.alertifyService.successMessage("User Deleted");
+      //this.alertifyService.successMessage("User Deleted");
+      window.location.reload();
     }));
 
   }
